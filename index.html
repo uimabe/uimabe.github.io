@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#17120c" />
+  <meta name="description" content="UIM Abe — Old School RuneScape Ultimate Ironman streams, clips, and chaos." />
+  <meta property="og:title" content="UIM Abe | OSRS Ultimate Ironman" />
+  <meta property="og:description" content="No bank. Just grinds, clips & chaos." />
+  <meta property="og:type" content="website" />
+  <title>UIM Abe | OSRS Ultimate Ironman</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2317120c'/%3E%3Cpath d='M16 15h32v34H16z' fill='%23ba8b47'/%3E%3Cpath d='M22 10h20v9H22zM22 45h20v9H22z' fill='%23e8c77e'/%3E%3Cpath d='M25 25h14v14H25z' fill='%2317120c'/%3E%3C/svg%3E" />
+  <style>
+    :root{
+      --bg:#0c0a07;
+      --panel:#17120c;
+      --panel-2:#21180f;
+      --line:#6c4b26;
+      --gold:#e8c77e;
+      --gold-2:#ba8b47;
+      --text:#fff5dc;
+      --muted:#c9b58b;
+      --shadow:#020201;
+      --focus:#fff2a6;
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 20% 5%, rgba(186,139,71,.14), transparent 26rem),
+        radial-gradient(circle at 85% 75%, rgba(232,199,126,.08), transparent 28rem),
+        linear-gradient(180deg,#100c08 0%,var(--bg) 65%);
+      font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Consolas, monospace;
+      display:grid;
+      place-items:center;
+      padding:32px 18px;
+      overflow-x:hidden;
+    }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.14;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+      background-size:24px 24px;
+      mask-image:linear-gradient(to bottom,black,transparent 88%);
+    }
+    .shell{width:min(100%,620px);position:relative;z-index:1}
+    .card{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(180deg,rgba(33,24,15,.98),rgba(18,14,9,.98));
+      border:2px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:
+        0 0 0 4px var(--shadow),
+        0 22px 80px rgba(0,0,0,.58),
+        inset 0 1px 0 rgba(255,255,255,.08);
+    }
+    .topbar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+      padding:12px 16px;
+      border-bottom:1px solid rgba(232,199,126,.22);
+      background:rgba(0,0,0,.16);
+      color:var(--muted);
+      font-size:.76rem;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+    .status{display:flex;align-items:center;gap:8px}
+    .status-dot{
+      width:9px;height:9px;border-radius:50%;
+      background:#79d27c;
+      box-shadow:0 0 12px rgba(121,210,124,.7);
+    }
+    .hero{padding:38px 30px 24px;text-align:center}
+    .badge{
+      width:96px;height:96px;margin:0 auto 20px;
+      display:grid;place-items:center;
+      background:linear-gradient(145deg,#f0d08b,#a87739);
+      clip-path:polygon(20% 0,80% 0,100% 20%,100% 80%,80% 100%,20% 100%,0 80%,0 20%);
+      filter:drop-shadow(0 8px 0 #070503) drop-shadow(0 12px 20px rgba(0,0,0,.5));
+    }
+    .badge-inner{
+      width:76px;height:76px;
+      display:grid;place-items:center;
+      background:#21180f;
+      clip-path:inherit;
+      color:var(--gold);
+      font-weight:900;
+      font-size:1.45rem;
+      letter-spacing:-.08em;
+      text-shadow:2px 2px 0 #000;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(2.25rem,9vw,4rem);
+      line-height:.95;
+      letter-spacing:-.06em;
+      color:var(--gold);
+      text-shadow:3px 3px 0 #000;
+    }
+    .subtitle{
+      margin:14px auto 0;
+      max-width:470px;
+      color:var(--muted);
+      font-size:clamp(.92rem,3.5vw,1.08rem);
+      line-height:1.65;
+    }
+    .subtitle strong{color:var(--text)}
+    .links{display:grid;gap:13px;padding:8px 24px 28px}
+    .link{
+      --brand:var(--gold-2);
+      position:relative;
+      display:grid;
+      grid-template-columns:46px 1fr auto;
+      align-items:center;
+      gap:13px;
+      min-height:72px;
+      padding:11px 16px 11px 12px;
+      color:var(--text);
+      text-decoration:none;
+      background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(0,0,0,.09));
+      border:1px solid rgba(232,199,126,.26);
+      border-left:5px solid var(--brand);
+      border-radius:13px;
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.05),0 6px 0 rgba(0,0,0,.25);
+      transform:translateY(0);
+      transition:transform .16s ease,border-color .16s ease,background .16s ease;
+    }
+    .link:hover{
+      transform:translateY(-3px);
+      border-color:rgba(232,199,126,.72);
+      background:linear-gradient(180deg,rgba(255,255,255,.075),rgba(0,0,0,.05));
+    }
+    .link:active{transform:translateY(2px)}
+    .link:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+    .icon{
+      width:46px;height:46px;
+      display:grid;place-items:center;
+      border-radius:10px;
+      background:rgba(0,0,0,.24);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .icon svg{width:25px;height:25px;fill:currentColor}
+    .copy{min-width:0}
+    .name{display:block;font-weight:800;font-size:1.02rem;letter-spacing:.02em}
+    .handle{
+      display:block;margin-top:4px;
+      color:var(--muted);
+      font-size:.78rem;
+      white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+    }
+    .arrow{color:var(--gold);font-size:1.35rem;font-weight:900}
+    .twitch{--brand:#9146ff}.kick{--brand:#53fc18}.youtube{--brand:#ff3b30}
+    .panel{
+      margin:0 24px 26px;
+      padding:18px;
+      border:1px dashed rgba(232,199,126,.32);
+      border-radius:13px;
+      background:rgba(0,0,0,.12);
+      text-align:center;
+    }
+    .panel-title{
+      color:var(--gold);
+      font-size:.79rem;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      margin-bottom:8px;
+    }
+    .panel p{margin:0;color:var(--muted);font-size:.83rem;line-height:1.55}
+    .actions{
+      display:flex;justify-content:center;gap:10px;flex-wrap:wrap;
+      padding:0 24px 30px;
+    }
+    button{
+      appearance:none;
+      border:1px solid rgba(232,199,126,.35);
+      border-radius:10px;
+      background:#17120c;
+      color:var(--text);
+      font:inherit;
+      font-size:.78rem;
+      font-weight:800;
+      padding:11px 14px;
+      cursor:pointer;
+      box-shadow:0 4px 0 #050402;
+    }
+    button:hover{border-color:var(--gold)}
+    button:active{transform:translateY(2px);box-shadow:0 2px 0 #050402}
+    button:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+    .footer{
+      padding:16px 22px 20px;
+      color:#947e58;
+      font-size:.7rem;
+      text-align:center;
+      border-top:1px solid rgba(232,199,126,.14);
+    }
+    .toast{
+      position:fixed;left:50%;bottom:24px;z-index:9;
+      transform:translate(-50%,20px);
+      opacity:0;
+      pointer-events:none;
+      background:#efe0b4;color:#17120c;
+      border:2px solid #17120c;border-radius:9px;
+      padding:10px 14px;
+      font-size:.78rem;font-weight:900;
+      box-shadow:0 7px 0 rgba(0,0,0,.45);
+      transition:.18s ease;
+    }
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    @media (max-width:480px){
+      body{padding:16px 12px}
+      .hero{padding:30px 18px 20px}
+      .links{padding-inline:14px}
+      .panel{margin-inline:14px}
+      .actions{padding-inline:14px}
+      .topbar{font-size:.66rem}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="card" aria-labelledby="page-title">
+      <div class="topbar">
+        <span>Ultimate Ironman</span>
+        <span class="status"><span class="status-dot" aria-hidden="true"></span> UIM mode</span>
+      </div>
+
+      <header class="hero">
+        <div class="badge" aria-hidden="true"><div class="badge-inner">UIM</div></div>
+        <h1 id="page-title">UIM ABE</h1>
+        <p class="subtitle"><strong>No bank.</strong> Just grinds, clips &amp; chaos.<br>Old School RuneScape Ultimate Ironman.</p>
+      </header>
+
+      <nav class="links" aria-label="UIM Abe social links">
+        <a class="link twitch" href="https://www.twitch.tv/uimabe" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4.27 2 3 5.18V19h4.36v3h2.73l3-3h3.64L21 14.73V2H4.27Zm14.55 11.64-2.45 2.45h-4l-2.09 2.09v-2.09H6V4.18h12.82v9.46ZM16.64 6.27h-2.18v6.18h2.18V6.27Zm-4 0h-2.18v6.18h2.18V6.27Z"/></svg>
+          </span>
+          <span class="copy"><span class="name">Watch on Twitch</span><span class="handle">twitch.tv/uimabe</span></span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+
+        <a class="link kick" href="https://kick.com/uim-abe" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 3h6v6h2V7h2V5h2V3h6v6h-2v2h-2v2h2v2h2v6h-6v-2h-2v-2h-2v4H3V3Z"/></svg>
+          </span>
+          <span class="copy"><span class="name">Watch on Kick</span><span class="handle">kick.com/uim-abe</span></span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+
+        <a class="link youtube" href="https://www.youtube.com/watch?v=oSOjlKfrhMk" target="_blank" rel="noopener noreferrer">
+          <span class="icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8ZM9.6 15.6V8.4L15.8 12l-6.2 3.6Z"/></svg>
+          </span>
+          <span class="copy"><span class="name">Watch on YouTube</span><span class="handle">UIM Abe streams &amp; videos</span></span>
+          <span class="arrow" aria-hidden="true">›</span>
+        </a>
+      </nav>
+
+      <aside class="panel">
+        <div class="panel-title">Current grind</div>
+        <p>Building the account one questionable UIM decision at a time.</p>
+      </aside>
+
+      <div class="actions">
+        <button type="button" id="shareBtn">Copy website link</button>
+        <button type="button" id="randomBtn">Choose my platform</button>
+      </div>
+
+      <footer class="footer">© <span id="year"></span> UIM Abe · Not affiliated with Jagex.</footer>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Link copied.</div>
+
+  <script>
+    const platformLinks = [
+      "https://www.twitch.tv/uimabe",
+      "https://kick.com/uim-abe",
+      "https://www.youtube.com/watch?v=oSOjlKfrhMk"
+    ];
+
+    const toast = document.getElementById("toast");
+    const showToast = (message) => {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => toast.classList.remove("show"), 1800);
+    };
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("shareBtn").addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(location.href);
+        showToast("Website link copied.");
+      } catch {
+        showToast("Copy the address from your browser.");
+      }
+    });
+
+    document.getElementById("randomBtn").addEventListener("click", () => {
+      const destination = platformLinks[Math.floor(Math.random() * platformLinks.length)];
+      window.open(destination, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
